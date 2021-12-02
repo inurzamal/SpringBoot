@@ -19,30 +19,30 @@ public class SpringBootJpaApplication {
 		
 		UserRepository userRepository = context.getBean(UserRepository.class);
 		
-		User user = new User();
-		user.setName("Rahul");
-		user.setCity("Guwahati");
-		
-		// Save a single user
-		User save = userRepository.save(user);
-		System.out.println(save);
-		
-		
-		User user1 = new User();
-		user1.setName("Sudemshri");
-		user1.setCity("Guwahati");
-				
-		User user2 = new User();
-		user2.setName("Sumi");
-		user2.setCity("Delhi");
-		
-		List<User> list = List.of(user1, user2);
-		Iterable<User> iterable = userRepository.saveAll(list);  
-		
-		iterable.forEach(u->{
-			System.out.println(u);
-		});
-		
+//		User user = new User();
+//		user.setName("Rahul");
+//		user.setCity("Guwahati");
+//		
+//		// Save a single user
+//		User save = userRepository.save(user);
+//		System.out.println(save);
+//		
+//		
+//		User user1 = new User();
+//		user1.setName("Sudemshri");
+//		user1.setCity("Guwahati");
+//				
+//		User user2 = new User();
+//		user2.setName("Sumi");
+//		user2.setCity("Delhi");
+//		
+//		List<User> list = List.of(user1, user2);
+//		Iterable<User> iterable = userRepository.saveAll(list);  
+//		
+//		iterable.forEach(u->{
+//			System.out.println(u);
+//		});
+//		
 		
 		//update the user of id 2
 		
@@ -68,10 +68,22 @@ public class SpringBootJpaApplication {
 		
 		// Delete from Database
 		
+		
 //		userRepository.deleteById(2);
 		
 //		Iterable<User> findAll = userRepository.findAll();
 //		userRepository.deleteAll(findAll);
+		
+		//Custom finder methods
+		
+		List<User> list2 = userRepository.findByName("sumi");
+		list2.forEach(u->System.out.println(u));
+		
+		List<User> list3 = userRepository.findByNameAndCity("Rahul", "Guwahati");
+		list3.forEach(u->System.out.println(u));
+		
+		List<User> list4 = userRepository.findByNameStartingWith("r");
+		list4.forEach(user->System.out.println(user));
 				
 	}
 

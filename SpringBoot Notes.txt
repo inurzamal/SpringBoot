@@ -1,0 +1,83 @@
+WebApp
+-------
+-->Dependencies(pom.xml)
+  -spring-boot-starter-web
+
+1)Create a Controller
+  (Java Class: i.e- TestController.java) under sub-package of the existing package
+Example:-
+@Controller
+public class TestController {	
+	@RequestMapping("/")
+	public String handler() {
+		System.out.println("Home Page");
+		return "index";
+	}
+}
+
+2) Create folders under: src-->main-->
+   webapp->views->index.jsp
+
+3) under src->main->resources->application.properties
+    spring.mvc.view.prefix = /views/
+    spring.mvc.view.suffix = .jsp
+
+   //server.port=8080 (port may change-optional)
+
+____________________________________________________________
+
+Spring Boot JPA (Database Opeartion) -Normal Project Standalone
+---------------------------
+-->Dependencies(pom.xml)
+  -spring-boot-starter-data-jpa
+  -mysql-connector-java
+
+1) Create Entity under sub package Entity
+  Example: User, Product, Books, etc. (class with @Entity annotation)
+  -variables: id (@Id, @GeneratedValue(StrategyType.AUTO))
+
+2) Create Interface Repository extends CRUDRepository/JPARepository 
+  under dao sub package
+ -Example: public interface UserRepository extends CRUDRepository
+
+3) Configuration
+application.properties
+-->DataSource
+  spring.datasource.name=jpatest
+  spring.datasource.url=jdbc:mysql://localhost:3306/jpatest
+  spring.datasource.username=root
+  spring.datasource.password=root
+  spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+  spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+  spring.jpa.hibernate.ddl-auto=update
+
+4) main-->
+   ApplicationContext context = SpringApplication.run(SpringBootJpaApplication.class, args);
+   UserRepository ur = context.getBean(UserRepository.class); 
+   //where UserRepository is the interface we have created 
+    but SpringBoot automatically provides the implementaion class for us.
+
+  //Create object of the User (Entity class)
+	User user = new User();
+	user.setName("Rahul");
+	user.setCity("Guwahati");
+//save user
+  ur.save(user)
+
+//Get data from database
+		
+Iterable<User> itr = ur.findAll();
+itr.forEach(u->System.out.println(u));   
+------------------------------------------
+
+Derive Query Methods / Custom finder methods
+get data by name
+get data by name and password, etc.
+
+Note: We have to write the method prototype only (Abstract Method)  
+     inside the Interface we have created, implementation will be provided by JPA
+
+Example: We want to fire the following query
+  -select * from User where name= "something";
+   public List<User> findByName(String name);
+
