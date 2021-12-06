@@ -1,5 +1,0 @@
-package com.boot.jpa.dao;
-
-public interface UserRepository {
-
-}
