@@ -28,19 +28,39 @@ public class BookService {
 	
 	//Get Single BookById
 	
-	public Book getBookById(int id) {
-		
-		Book book = null;
-		
+	public Book getBookById(int id) {		
+		Book book = null;		
 		try {
 			book = this.bookRepository.findById(id);
-		} 
-		
+		} 		
 		catch (Exception e) {
 			e.printStackTrace();
-		}
-		
+		}		
 		return book;		
+	}
+	
+	// Add Books
+	
+	public Book addBook(Book b) {
+		Book result= bookRepository.save(b);
+		return result;
+	}
+	
+	
+	// Delete Books
+	
+	public void deleteBook(int bid) {
+		bookRepository.deleteById(bid);
+	}
+	
+	
+	//Update the Book
+	
+	public void updateBook(Book book, int bid) {
+		
+		book.setId(bid);		
+		bookRepository.save(book);
+		
 	}
 	
 	
