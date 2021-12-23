@@ -1,10 +1,10 @@
 package com.boot.restapi.uploadhelper;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,6 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileUploadHelper {
 	
 	public final String UPLOAD_DIR = "C:\\Users\\User\\Desktop\\SpringBoot\\SpringBootRestAPI\\src\\main\\resources\\static\\images";
+//	public final String UPLOAD_DIR = new ClassPathResource("static/images/").getFile().getAbsolutePath();
+	
+	public FileUploadHelper() throws IOException {}
 
 	public boolean fileUpload(MultipartFile multipart)
 	{

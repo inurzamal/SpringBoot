@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Thymeleaf with Spring boot</title>
+</head>
+<body>
+
+	<h1>Hello ! I am Thymeleaf</h1>
+	
+	<h2 th:text = "${name}"></h2>
+	<h2>Welcome Mr. <span th:text="${name}"></span></h2>
+	<h3 th:text="${#strings.toUpperCase(name)}"></h3>
+	<h3> Length of the String is <span th:text="${#strings.length(name)}"> </span> </h3>
+	
+	<div th:with="a=5, b=7, n=${name}">
+	
+		<h4>Value of local variable a is: <span th:text="${a}"></span></h4>
+		<h4 th:text="'Value of b is: '+${b}"></h4>
+		<h4>Local value of n is : <span th:text="${n}"></span></h4>
+		<h4 th:text="'Sum of '+${a}+' and '+${b}+' is: '+ ${a+b}"></h4>
+	
+	</div>
+	
+	
+</body>
+</html>

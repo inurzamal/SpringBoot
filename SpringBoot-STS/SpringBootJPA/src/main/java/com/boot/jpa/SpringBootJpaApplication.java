@@ -74,8 +74,8 @@ public class SpringBootJpaApplication {
 //		Iterable<User> findAll = userRepository.findAll();
 //		userRepository.deleteAll(findAll);
 		
-//		//Custom finder methods
-//		
+		//Custom finder methods
+		
 //		List<User> list2 = userRepository.findByName("sumi");
 //		list2.forEach(u->System.out.println(u));
 //		
@@ -83,8 +83,7 @@ public class SpringBootJpaApplication {
 //		list3.forEach(u->System.out.println(u));
 //		
 //		List<User> list4 = userRepository.findByNameStartingWith("r");
-//		list4.forEach(u->System.out.println(u));
-		
+//		list4.forEach(user->System.out.println(user));
 		
 //		List<User> userByName = userRepository.getUserByName("rahul");
 //		userByName.forEach(e->System.out.println(e));
@@ -94,6 +93,7 @@ public class SpringBootJpaApplication {
 		
 		List<User> userList = userRepository.getUsers();
 		userList.forEach(u->System.out.println(u));
+				
 	}
 
 }
