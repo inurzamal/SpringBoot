@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Conditional Test</title>
+</head>
+
+<body>
+
+	<h1>User is <span th:text="${isActive}? 'Active':'Not Active'" 
+						th:style="${isActive}?'color:green':'color:red'" ></span></h1>
+						
+	<h2 th:if ="${gender}=='M'">Male</h2>
+	<h2 th:unless ="${gender}=='M'">Female</h2>
+	
+	<div th:switch="${#lists.size(mylist)}">
+		<h3 th:case="'0'">List size is Zero</h3>
+		<h3 th:case="'1'">List contain one element</h3>
+		<h3 th:case="'2'">List contain two elements</h3>
+		<h3 th:case="*">List contain more than two elements</h3>
+	</div>
+	
+</body>
+
+</html>

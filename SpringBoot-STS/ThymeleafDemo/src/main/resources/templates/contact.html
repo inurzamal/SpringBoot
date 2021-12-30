@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>including fragments</title>
+</head>
+
+<body>
+
+<h2>Welcome to CS Coder !</h2>
+
+<footer th:replace="footer::footer1(${title},${subtitle})">
+
+</footer>
+	
+</body>
+</html>

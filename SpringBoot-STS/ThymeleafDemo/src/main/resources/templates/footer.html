@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>fragment</title>
+</head>
+<body>
+	<footer th:fragment="footer1(title,subtitle)">
+	
+	<h4>Thank you for Subscribing..</h4>
+	
+	<h5 th:text="${title}"></h5>
+	<h5 th:text="${subtitle}"></h5>
+	
+	</footer>
+</body>
+</html>
